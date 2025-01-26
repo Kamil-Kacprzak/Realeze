@@ -1,0 +1,14 @@
+<div class="notes">
+  <button class="btn btn-primary" (click)="addCard()">Add Card</button>
+  <button class="btn btn-primary" (click)="removeCard()">Remove Card</button>
+  <div class="col">
+    @for (card of cards; track card.id){
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ card.title }}</h5>
+        <p class="card-text">{{ card.content }}</p>
+      </div>
+    </div>
+    }
+  </div>
+</div>
