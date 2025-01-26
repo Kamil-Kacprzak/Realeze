@@ -15,7 +15,7 @@ export class CardManagerService {
     this.cardsSubject = new BehaviorSubject<Card[]>([]);
     this.cards$ = this.cardsSubject.asObservable();
 
-    for (let i = this.idCounter; i < this.idCounter + 7; i++) {
+    for (let i = this.idCounter; i < 8; i++) {
       const currentDate = new Date();
       currentDate.setDate(currentDate.getDate() + i);
       let card = this.createCard(currentDate.toDateString(), `${i}`);
@@ -24,11 +24,13 @@ export class CardManagerService {
   }
 
   createCard(title: string, content: string): Card {
+    console.log(this.idCounter);
     const card: Card = {
-      id: this.idCounter++,
+      id: this.idCounter,
       title,
-      content
+      content: content === "" ? `${this.idCounter}` : content,
     };
+    this.idCounter++;
     return card;
   }
 
